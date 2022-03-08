@@ -12,26 +12,21 @@ export default () => {
 
   const [chatList, setChatList] = useState([
     {chatId: 1, title: 'COSMO - Meu Amor Trabalho', image: 'https://pps.whatsapp.net/v/t61.24694-24/263030427_151277450632056_7883508245742298529_n.jpg?ccb=11-4&oh=9abe0752ab43ef4342c47fcad3f0b9c9&oe=622C2E82'},
-    {chatId: 2, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'},
-    {chatId: 3, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'},
-    {chatId: 4, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'},
-    {chatId: 5, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'},
-    {chatId: 6, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'},
-    {chatId: 7, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'},
-    {chatId: 8, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'},
-    {chatId: 9, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'},
-    {chatId: 10, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'},
-    {chatId: 11, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'},
-    {chatId: 12, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'},
-    {chatId: 13, title: 'Nome Aqui', image: 'https://thispersondoesnotexist.com/image'}
   ])
   const [activeChat, setActiveChat] = useState({})
+  const [user, setUser] = useState(
+    {
+      id: 1234, 
+      avatar: 'https://pps.whatsapp.net/v/t61.24694-24/259809236_653627532638950_1622774033747924876_n.jpg?ccb=11-4&oh=01_AVwv-9d4H_qyk9640lhIfjwCUXlcHdhf-9QbHwcmPbbxOA&oe=622D65A7', 
+      name: 'Pedro Souza'
+    }
+    )
 
   return (
     <div className="app-window">
       <div className='sidebar'>
         <header>
-          <img className='header--avatar' src="https://www.w3schools.com/howto/img_avatar.png" alt="" title='Avatar'/>
+          <img className='header--avatar' src={user.avatar} alt="" title='Avatar'/>
           <div className='header--buttons' title='DivBotoes'>
             <div className="header--btn">
               <DonutLargeIcon style={{color: '#919191'}}/>
@@ -65,7 +60,7 @@ export default () => {
       </div>
       <div className="contentarea">
         {activeChat.chatId !== undefined &&
-          <ChatWindow />
+          <ChatWindow user={user}/>
         }
         {activeChat.chatId === undefined &&
           <ChatIntro />
